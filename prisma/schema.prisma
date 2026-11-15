@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Familia {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  descripcion String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  plantas     Planta[]
+}
+
+model Planta {
+  id               Int        @id @default(autoincrement())
+  nombreComun      String
+  nombreCientifico String?
+  descripcion      String?
+  riego            String?
+  luz              String?
+  foto             String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  familiaId        Int?
+  familia          Familia?   @relation(fields: [familiaId], references: [id])
+  etiquetas        Etiqueta[]
+}
+
+model Etiqueta {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  plantas   Planta[]
+}

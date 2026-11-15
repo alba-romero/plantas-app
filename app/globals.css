@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-papel: #f5f0e1;
+  --color-papel-oscuro: #e9e1cb;
+  --color-lamina: #fbf8ef;
+  --color-bosque: #1f3d2e;
+  --color-bosque-claro: #2f5a43;
+  --color-salvia: #8aa88c;
+  --color-salvia-claro: #dfe8d8;
+  --color-arcilla: #b25a3c;
+  --color-laton: #b8934a;
+  --color-tinta: #2b2a24;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-karla), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply font-body text-tinta;
+  background: radial-gradient(ellipse at top, #faf6ea 0%, #f5f0e1 55%, #e9e1cb 100%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .btn-primario {
+    @apply inline-flex items-center justify-center rounded-sm border border-bosque bg-bosque px-4 py-2 font-medium tracking-wide text-papel transition-colors hover:bg-bosque-claro;
+  }
+  .btn-secundario {
+    @apply inline-flex items-center justify-center rounded-sm border border-bosque/40 px-4 py-2 font-medium text-bosque transition-colors hover:bg-salvia-claro;
+  }
+  .btn-peligro {
+    @apply inline-flex items-center justify-center rounded-sm border border-arcilla/50 px-3 py-1 text-sm text-arcilla transition-colors hover:bg-arcilla hover:text-papel;
+  }
+  .campo {
+    @apply w-full rounded-sm border border-bosque/30 bg-white/60 px-3 py-2 outline-none focus:border-bosque focus:ring-2 focus:ring-salvia;
+  }
+  .etiqueta {
+    @apply rounded-full border border-salvia bg-salvia-claro px-2.5 py-0.5 text-xs text-bosque;
+  }
 }
