@@ -56,6 +56,28 @@ export default function FormularioPlanta({ action, planta, familias, etiquetas }
           </select>
         </div>
       </div>
+      <div>
+  <label className="mb-1 block font-medium">Foto</label>
+  {planta?.foto && (
+    <div className="mb-2 flex items-center gap-4">
+      <img
+        src={planta.foto}
+        alt={planta.nombreComun}
+        className="h-24 w-24 border border-laton/60 object-cover"
+      />
+      <label className="flex items-center gap-2 text-sm">
+        <input type="checkbox" name="quitarFoto" className="accent-bosque" />
+        Quitar foto actual
+      </label>
+    </div>
+  )}
+  <input
+    type="file"
+    name="foto"
+    accept="image/*"
+    className="campo file:mr-3 file:border-0 file:bg-salvia-claro file:px-3 file:py-1 file:text-bosque"
+  />
+</div>
 
       <div>
         <label className="mb-1 block font-medium">Familia</label>
