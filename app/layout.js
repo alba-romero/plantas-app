@@ -38,6 +38,9 @@ export default function RootLayout({ children }) {
               <Link href="/familias" className="hover:text-laton">
   Familias
 </Link>
+<Link href="/etiquetas" className="hover:text-laton">
+  Etiquetas
+</Link>
             </nav>
             
           </div>
