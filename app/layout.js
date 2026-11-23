@@ -1,6 +1,7 @@
 import { Cormorant_Garamond, Karla } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
+import RegistrarSW from "./RegistrarSW";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -19,10 +20,15 @@ export const metadata = {
   description: "Catálogo de plantas de interior y exterior",
 };
 
+export const viewport = {
+  themeColor: "#1f3d2e",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es" className={`${cormorant.variable} ${karla.variable}`}>
       <body className="min-h-screen antialiased">
+        <RegistrarSW />
         <header className="border-b-4 border-double border-laton bg-bosque text-papel">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-8 py-5">
             <Link
